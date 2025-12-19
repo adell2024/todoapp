@@ -4,12 +4,16 @@ def export_to_csv(filename="tasks.csv"):
     if not tasks:
         print("Aucune tâche à exporter.")
         return
-    with open(filename, mode='w', newline='', encoding='utf-8') as file:
-        writer = csv.writer(file)
-        writer.writerow(["Numéro", "Tâche"])
-        for i, task in enumerate(tasks, 1):
-            writer.writerow([i, task])
-    print(f"Tâches exportées dans {filename}")
+    try:
+        with open(filename, mode='w', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            writer.writerow(["Numéro", "Tâche"])
+            for i, task in enumerate(tasks, 1):
+                writer.writerow([i, task])
+        print(f"Tâches exportées avec succès dans {filename}")
+    except Exception as e:
+        print(f"Erreur lors de l'export : {e}")
+        
 tasks = []
 
 def edit_task(index, new_task):
