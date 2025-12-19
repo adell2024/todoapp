@@ -1,5 +1,13 @@
 tasks = []
 
+def edit_task(index, new_task):
+    if 1 <= index <= len(tasks):
+        old = tasks[index - 1]
+        tasks[index - 1] = new_task
+        print(f"Tâche modifiée : {old} -> {new_task}")
+    else:
+        print("Index invalide.")
+
 def add_task(task):
     tasks.append(task)
     print(f"Tâche ajoutée : {task}")
